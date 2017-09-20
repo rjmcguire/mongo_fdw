@@ -405,7 +405,7 @@ AppendParamValue(BSON *queryDocument, const char *keyName, Param *paramNode,
 	param_expr = ExecInitExpr((Expr *) paramNode, (PlanState *)scanStateNode);
 
 	/* Evaluate the parameter expression */
-	param_value = ExecEvalExpr(param_expr, econtext, &isNull, NULL);
+	param_value = ExecEvalExpr(param_expr, econtext, &isNull);
 
 	AppenMongoValue(queryDocument, keyName, param_value, isNull,
 				paramNode->paramtype);
